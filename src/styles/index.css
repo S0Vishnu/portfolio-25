@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Funnel+Display:wght@300..800&family=Rock+Salt&family=Zen+Loop:ital@0;1&display=swap');
+
+body,
+html,
+:root {
+  /* font family */
+  --font-inter: "Inter", sans-serif;
+  --font-josefin-sans: "Josefin Sans", sans-serif;
+  --font-zen-loop: "Zen Loop", cursive;
+  --font-poppins: "Poppins", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-krona: "Krona One", sans-serif;
+  --font-do-hyeon: "Do Hyeon", sans-serif;
+  --font-baren-outline: "baren_outline", sans-serif;
+  --font-baren-vintage: "baren_vintage", sans-serif;
+  --font-baren-regular: "baren_regular", sans-serif;
+  --font-baren-rough: "baren_rough", sans-serif;
+  --font-baren-rough-outline: "baren_rough_outline", sans-serif;
+  --font-baren-round: "baren_round", sans-serif;
+  --font-baren-round-outline: "baren_round_outline", sans-serif;
+
+  /* font size */
+  --tiny: 0.625rem; /* 10px */
+  --small: 0.75rem; /* 12px */
+  --s-regular: 0.875rem; /* 14px */
+  --s-medium: 1rem; /* 16px */
+  --big: 1.25rem; /* 18px */
+  --large: 1.5rem; /* 24px */
+  --xlarge: 2rem; /* 32px */
+  --xxlarge: 2rem; /* 32px */
+  --large-40: 2.5rem; /* 40px */
+  --large-60: 3.75rem; /* 60px */
+  --large-80: 5rem; /* 80px */
+  --large-96: 6rem; /* 90px */
+
+  /* Font weight */
+  --extra-light: 200; /* Extra Light */
+  --light: 300; /* Light (Thin) */
+  --regular: 400; /* Regular (Normal) */
+  --medium: 500; /* Medium */
+  --semi-bold: 600; /* Semi-Bold */
+  --bold: 700; /* Bold */
+  --extra-bold: 800; /* Extra Bold */
+  --black: 900; /* Black */
+
+  /* border radius */
+  --border-radius-small: 4px;
+  --border-radius-medium: 6px;
+  --border-radius-large: 12px;
+  --border-radius-circle: 50%;
+  --border-radius-xlarge: 16px;
+  --border-radius-extra-large: 20px;
+  --border-radius-xxx: 30px;
+
+  /* colors */
+  --yellow-dark: #c2a80c;
+  --text-color: #f1f2f2;
+  --hidden-text: #171717;
+  --text-gray-color: #565656;
+  --accent: #fcff00;
+  --background-main: #080808;
+  --background-card: #1e1e1e;
+
+  /* cursor */
+  --cursor-pointer: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyMiIgY3k9IjIyIiByPSIxOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmNmZjAwIiBzdHJva2Utd2lkdGg9IjQiLz48L3N2Zz4=") 22 22, auto;
+  --cursor-default: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxMCIgZmlsbD0iI2ZjZmYwMCIvPjwvc3ZnPg==") 16 16, auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-dm-sans);
+}
+
+body {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--background-main);
+  font-family: var(--font-dm-sans);
+}
+
+a {
+  font-weight: var(--medium);
+  color: var(--accent);
+  text-decoration: inherit;
+}
+a:hover {
+  color: #ffd900;
+}
+
+button {
+  border-radius: var(--border-radius-large);
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: var(--medium);
+  font-family: inherit;
+  background-color: var(--background-card);
+  cursor: var(--cursor-pointer);
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: var(--accent);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
