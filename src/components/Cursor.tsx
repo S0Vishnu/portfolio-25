@@ -17,7 +17,7 @@ const Cursor = () => {
 
     const handleHover = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest("button")) {
+      if (target.closest("button") || target.closest("a")) {
         document.body.classList.add("button-hovered");
       } else {
         document.body.classList.remove("button-hovered");

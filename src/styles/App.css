@@ -27,12 +27,8 @@ nav {
 .works-container {
   position: relative;
   z-index: 2;
-  height: 100vh;
-  width: 100vw;
-  pointer-events: none;
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 .hero-main-wrapper {
@@ -40,7 +36,6 @@ nav {
   z-index: 2;
   height: 100vh;
   width: 100%;
-  pointer-events: none;
 
   .hero-text-wrapper {
     user-select: none;
@@ -143,24 +138,4 @@ nav {
       }
     }
   }
-
-  .scroll-down-text {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    writing-mode: vertical-rl;
-    margin-bottom: 90px;
-
-    &::after {
-      content: "";
-      position: relative;
-      display: block;
-      height: 80px;
-      width: 1px;
-      background: var(--text-color);
-      top: calc(100% + 8px);
-      left: 10px;
-    }
-  }
 }
-

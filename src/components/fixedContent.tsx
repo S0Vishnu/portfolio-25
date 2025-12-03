@@ -28,7 +28,6 @@ const MainContents: React.FC = () => {
           <LinkedInIcon />
         </a>
       </div>
-      <div className="scroll-down-text">scroll down</div>
     </div>
   );
 };

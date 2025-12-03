@@ -102,7 +102,7 @@ const TechStack = () => {
                   <div className="tech-icon-container">
                     <IconComponent />
                   </div>
-                  <span className="tech-name">{tech.name}</span>
+                  {/* <span className="tech-name">{tech.name}</span> */}
                 </div>
               );
             })}

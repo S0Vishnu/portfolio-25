@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projectData';
-import type { Project } from '../types';
 import '../styles/Works.css';
 
 const Works = () => {

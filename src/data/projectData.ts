@@ -40,7 +40,8 @@ import zenClose from '../assets/images/renders/zen-close.webp';
 
 // Projects data based on images in assets/images folder
 export const projects: (Project | Comic)[] = [
-  // Web projects
+  // Featured Projects
+  // Featured Web projects
   {
     id: 'web-fall-guys',
     title: 'Fall Guys',
@@ -85,7 +86,102 @@ export const projects: (Project | Comic)[] = [
     featured: true,
     link: 'https://example.com/pet-care',
   },
-  // design projects
+  // Featured Render projects
+  {
+    id: 'render-wallart-in-street',
+    title: 'Wallart In Street',
+    content: '3D render of wallart in street',
+    category: 'render',
+    beta: false,
+    thumbnail: wallartInStreet,
+    status: 'published',
+    featured: true,
+  },
+  {
+    id: 'render-food-dragon',
+    title: 'Food Dragon',
+    content: '3D render of a food dragon',
+    category: 'render',
+    beta: false,
+    thumbnail: foodDragon,
+    status: 'published',
+    featured: true,
+  },
+  {
+    id: 'render-violin-2',
+    title: 'Violin 2',
+    content: '3D render of a violin',
+    category: 'render',
+    beta: false,
+    thumbnail: violin2,
+    status: 'published',
+    featured: true,
+  },
+  {
+    id: 'render-robot-1',
+    title: 'Robot 1',
+    content: '3D render of a robot',
+    category: 'render',
+    beta: false,
+    thumbnail: robot1,
+    status: 'published',
+    featured: true,
+  },
+  {
+    id: 'render-table-scene-2',
+    title: 'Table Scene 2',
+    content: '3D render of a table scene',
+    category: 'render',
+    beta: false,
+    thumbnail: tableScene2,
+    status: 'published',
+    featured: true,
+  },
+  {
+    id: 'render-zen',
+    title: 'Zen',
+    content: '3D render of a zen scene',
+    category: 'render',
+    beta: false,
+    thumbnail: zen,
+    status: 'published',
+    featured: true,
+  },
+  {
+    id: 'render-502',
+    title: '502 Error',
+    content: '3D render of 502 error page design',
+    category: 'render',
+    beta: false,
+    thumbnail: error502,
+    status: 'published',
+    featured: true,
+  },
+  {
+    id: 'render-car-scene',
+    title: 'Car Scene',
+    content: '3D render of a car scene',
+    category: 'render',
+    beta: false,
+    thumbnail: carScene,
+    status: 'published',
+    featured: true,
+  },
+  
+  // Featured Art projects
+  {
+    id: 'art-walking-mobile-wallpaper',
+    title: 'Walking Mobile Wallpaper',
+    content: 'Mobile wallpaper artwork',
+    category: 'art',
+    beta: false,
+    thumbnail: walkingMobileWallpaper,
+    status: 'published',
+    featured: true,
+  },
+  
+  // Non-Featured Projects
+  // Design projects
   {
     id: 'web-portfolio',
     title: 'Portfolio',
@@ -94,7 +190,6 @@ export const projects: (Project | Comic)[] = [
     beta: false,
     thumbnail: portfolio,
     status: 'published',
-    featured: true,
     link: 'https://example.com/portfolio',
   },
   // Art projects
@@ -106,17 +201,6 @@ export const projects: (Project | Comic)[] = [
     beta: false,
     thumbnail: beruArt,
     status: 'published',
-    featured: true,
-  },
-  {
-    id: 'art-walking-mobile-wallpaper',
-    title: 'Walking Mobile Wallpaper',
-    content: 'Mobile wallpaper artwork',
-    category: 'art',
-    beta: false,
-    thumbnail: walkingMobileWallpaper,
-    status: 'published',
-    featured: true,
   },
   // Render projects
   {
@@ -144,15 +228,6 @@ export const projects: (Project | Comic)[] = [
     category: 'render',
     beta: false,
     thumbnail: error500,
-    status: 'published',
-  },
-  {
-    id: 'render-502',
-    title: '502 Error',
-    content: '3D render of 502 error page design',
-    category: 'render',
-    beta: false,
-    thumbnail: error502,
     status: 'published',
   },
   {
@@ -201,26 +276,6 @@ export const projects: (Project | Comic)[] = [
     status: 'published',
   },
   {
-    id: 'render-car-scene',
-    title: 'Car Scene',
-    content: '3D render of a car scene',
-    category: 'render',
-    beta: false,
-    thumbnail: carScene,
-    status: 'published',
-    featured: true,
-  },
-  {
-    id: 'render-food-dragon',
-    title: 'Food Dragon',
-    content: '3D render of a food dragon',
-    category: 'render',
-    beta: false,
-    thumbnail: foodDragon,
-    status: 'published',
-    featured: true,
-  },
-  {
     id: 'render-knife',
     title: 'Knife',
     content: '3D render of a knife',
@@ -239,16 +294,6 @@ export const projects: (Project | Comic)[] = [
     status: 'published',
   },
   {
-    id: 'render-robot-1',
-    title: 'Robot 1',
-    content: '3D render of a robot',
-    category: 'render',
-    beta: false,
-    thumbnail: robot1,
-    status: 'published',
-    featured: true,
-  },
-  {
     id: 'render-simple-table-2',
     title: 'Simple Table 2',
     content: '3D render of a simple table',
@@ -265,7 +310,6 @@ export const projects: (Project | Comic)[] = [
     beta: false,
     thumbnail: steampunkTableLamp,
     status: 'published',
-    featured: true,
   },
   {
     id: 'render-sword',
@@ -274,15 +318,6 @@ export const projects: (Project | Comic)[] = [
     category: 'render',
     beta: false,
     thumbnail: sword,
-    status: 'published',
-  },
-  {
-    id: 'render-table-scene-2',
-    title: 'Table Scene 2',
-    content: '3D render of a table scene',
-    category: 'render',
-    beta: false,
-    thumbnail: tableScene2,
     status: 'published',
   },
   {
@@ -304,24 +339,6 @@ export const projects: (Project | Comic)[] = [
     status: 'published',
   },
   {
-    id: 'render-violin-2',
-    title: 'Violin 2',
-    content: '3D render of a violin',
-    category: 'render',
-    beta: false,
-    thumbnail: violin2,
-    status: 'published',
-  },
-  {
-    id: 'render-wallart-in-street',
-    title: 'Wallart In Street',
-    content: '3D render of wallart in street',
-    category: 'render',
-    beta: false,
-    thumbnail: wallartInStreet,
-    status: 'published',
-  },
-  {
     id: 'render-watch',
     title: 'Watch',
     content: '3D render of a watch',
@@ -329,17 +346,6 @@ export const projects: (Project | Comic)[] = [
     beta: false,
     thumbnail: watch,
     status: 'published',
-    featured: true,
-  },
-  {
-    id: 'render-zen',
-    title: 'Zen',
-    content: '3D render of a zen scene',
-    category: 'render',
-    beta: false,
-    thumbnail: zen,
-    status: 'published',
-    featured: true,
   },
   {
     id: 'render-zen-close',

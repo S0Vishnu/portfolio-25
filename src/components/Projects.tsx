@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import type { Project } from '../types';
 import { projects } from '../data/projectData';
 import '../styles/Projects.css';
 
