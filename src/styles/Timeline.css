@@ -121,7 +121,7 @@
 
 .timeline-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: flex-start;
   gap: 2rem;
   flex-wrap: wrap;

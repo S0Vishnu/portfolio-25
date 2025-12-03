@@ -1,5 +1,6 @@
 import '../styles/About.css';
 import { SmilyIcon } from '../assets/svg/iconsSvg';
+import aboutImage from '../assets/images/me/me-min.png';
 
 const About = () => {
   return (
@@ -8,6 +9,7 @@ const About = () => {
 
       <div className="content-container">
         <div className="image-container">
+          <img src={aboutImage} alt="About Me" className="about-image" />
         </div>
         <div className="content">
           <p>
