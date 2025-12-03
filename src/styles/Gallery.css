@@ -105,7 +105,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   z-index: 1000;
   padding: 2rem;
   height: 100vh;
@@ -121,6 +121,7 @@
   gap: 1.5rem;
   position: relative;
   animation: modal-content-animation 0.3s ease-in-out forwards;
+  position: absolute;
 }
 
 @keyframes modal-image-animation {
@@ -156,7 +157,7 @@
 .btn-close {
   background-color: transparent;
   border-radius: 50%;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   transition: all 0.3s ease;
   height: 60px;
   width: 60px;
