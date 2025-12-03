@@ -16,9 +16,6 @@ const Contact = () => {
           <a href="" className="resume">
             view resume
           </a>
-          {/* <a href="/resume.pdf" className="resume" target="_blank">
-            view resume
-          </a> */}
         </div>
       </div>
     </section>

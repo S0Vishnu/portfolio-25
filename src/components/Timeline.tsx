@@ -1,9 +1,8 @@
-import React from 'react';
 import '../styles/Timeline.css';
 import { HandGesture, MileStoneIcon, Shape2 } from '../assets/svg/iconsSvg';
 import { timelineData } from '../data/timelineData';
 
-const Timeline: React.FC = () => {
+const Timeline = () => {
     return (
         <div className="timeline-page">
             {/* Top Section - Skills and Graphics */}

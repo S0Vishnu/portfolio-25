@@ -1,7 +1,6 @@
-import React from "react";
 import { GitHubIcon, InstagramIcon, LinkedInIcon } from "../assets/svg/socialMediaSvg";
 
-const FixedContents: React.FC = () => {
+const FixedContents = () => {
   return (
     <div className="fixed-content-wrapper">
       <div className="logo">vi.</div>

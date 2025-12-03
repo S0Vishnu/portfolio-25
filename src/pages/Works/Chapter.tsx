@@ -1,5 +1,4 @@
 import { useParams, Link } from 'react-router-dom';
-import type { Comic, Chapter } from '../../types';
 import { projects } from '../../data/projectData';
 import '../../styles/Chapter.css';
 

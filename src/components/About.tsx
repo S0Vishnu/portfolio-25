@@ -8,7 +8,6 @@ const About = () => {
 
       <div className="content-container">
         <div className="image-container">
-          {/* <img src={aboutImage} alt="About Me" className="about-image"/> */}
         </div>
         <div className="content">
           <p>

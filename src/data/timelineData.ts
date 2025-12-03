@@ -7,7 +7,6 @@ export interface TimelineItem {
   location: string;
   imageSrc: string;
   imageAlt: string;
-  placeholderText: string;
 }
 
 export const timelineData: TimelineItem[] = [
@@ -16,21 +15,18 @@ export const timelineData: TimelineItem[] = [
     location: 'dce, Diploma, cbe',
     imageSrc: psg,
     imageAlt: 'DCE College',
-    placeholderText: 'DCE<br/>College',
   },
   {
     date: '2019 - 2024',
     location: 'cse, B.E., cbe',
     imageSrc: srec,
     imageAlt: 'Ramakrishna Engineering College',
-    placeholderText: 'Ramakrishna<br/>Engineering<br/>College',
   },
   {
     date: '2024 - Now',
     location: 'ui/ux dev, Chennai',
     imageSrc: hexr,
     imageAlt: 'IHEXR Factory',
-    placeholderText: 'IHEXR<br/>FACTORY',
   },
 ];
 

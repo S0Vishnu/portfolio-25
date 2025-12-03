@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-const Landing: React.FC = () => {
+const Landing = () => {
   const subtitleRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
 
