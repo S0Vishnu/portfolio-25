@@ -84,57 +84,84 @@
     -moz-user-drag: none;
     -o-user-drag: none;
   }
+}
 
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    z-index: 1000;
-    padding: 2rem;
+/* Modal styles - moved outside gallery-container for proper fixed positioning */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1000;
+  padding: 2rem;
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  animation: modal-content-animation 0.3s ease-in-out forwards;
+}
+
+@keyframes modal-image-animation {
+  0% {
+    scale: 0.4;
+    opacity: 0;
   }
 
-  .modal-content {
-    max-width: 90%;
-    max-height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    position: relative;
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes modal-content-animation {
+  0% {
+    opacity: 0;
   }
 
-  .modal-image {
-    max-width: 100%;
-    max-height: 70vh;
-    object-fit: contain;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  100% {
+    opacity: 1;
   }
+}
 
-  .btn-close {
-    background-color: transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    height: 60px;
-    width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.modal-image {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  animation: modal-image-animation 0.5s ease-in-out forwards;
+}
 
-    &:hover {
-      background-color: var(--accent);
+.btn-close {
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      svg {
-        filter: invert(1);
-      }
-    }
-  }
+.btn-close:hover {
+  background-color: var(--accent);
+}
+
+.btn-close:hover svg {
+  filter: invert(1);
 }

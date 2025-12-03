@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { projects } from '../data/projectData';
 import '../styles/Gallery.css';
 import { ArrowRightIcon, CloseIcon } from '../assets/svg/iconsSvg';
@@ -276,8 +277,8 @@ const Gallery = () => {
         ))}
       </div>
 
-      {/* Preview Modal */}
-      {previewImage && (
+      {/* Preview Modal - Rendered via Portal to avoid PageTransition transform issues */}
+      {previewImage && createPortal(
         <div
           onClick={handleBackdropClick}
           className="modal-backdrop"
@@ -298,7 +299,8 @@ const Gallery = () => {
               <CloseIcon />
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );

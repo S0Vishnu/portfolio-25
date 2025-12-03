@@ -4,6 +4,7 @@ import Gallery from '../components/Gallery';
 import About from '../components/About';
 import TechStack from '../components/TechStack';
 import Contact from '../components/Contact';
+import Timeline from '../components/Timeline';
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <TechStack />
       <Projects />
       <Gallery />
+      <Timeline />
       <About />
       <Contact />
     </div>

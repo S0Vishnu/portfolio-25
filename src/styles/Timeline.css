@@ -1,0 +1,322 @@
+.timeline-page {
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow-x: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid var(--text-gray-color);
+
+}
+
+/* Top Section */
+.timeline-top-section {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  padding: 2rem 0;
+}
+
+/* Person Graphic */
+.person-graphic {
+  position: absolute;
+  left: 3%;
+  top: 5%;
+  z-index: 1;
+}
+
+.person-svg {
+  filter: drop-shadow(0 0 15px rgba(252, 255, 0, 0.4));
+}
+
+/* Hand Graphic */
+.hand-graphic {
+  position: absolute;
+  left: 22%;
+  top: 15%;
+  z-index: 2;
+}
+
+.hand-svg {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+}
+
+/* Skill Labels */
+.skill-label {
+  position: absolute;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 3;
+  font-family: var(--font-inter);
+}
+
+.pill-1 {
+  top: 40%;
+  left: 40%;
+  background-color: #2a2a2a;
+  width: fit-content;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+}
+
+.pill-2 {
+  top: 25%;
+  left: 58%;
+  background-color: transparent;
+  color: #fff;
+}
+
+.pill-3 {
+  top: 70%;
+  left: 58%;
+  background-color: transparent;
+  color: #fff;
+}
+
+.pill-4 {
+  top: 45%;
+  left: 68%;
+  background-color: #2a2a2a;
+  width: fit-content;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+}
+
+.pill-5 {
+  top: 12%;
+  left: 78%;
+  background-color: transparent;
+  border: 2.5px solid #fcff00;
+  border-radius: 50%;
+  padding: 0.6rem 1rem;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yellow-circle {
+  color: #fff;
+}
+
+.pill-6 {
+  top: 8%;
+  left: 52%;
+  background-color: transparent;
+  color: #fff;
+}
+
+/* Bottom Section - Timeline */
+.timeline-bottom-section {
+  width: 100%;
+}
+
+.timeline-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timeline-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.timeline-date {
+  font-weight: 600;
+}
+
+.timeline-flag {
+  font-size: 0.8rem;
+}
+
+.timeline-location {
+  text-transform: lowercase;
+  color: var(--text-gray-color);
+}
+
+.timeline-image {
+  width: 116px;
+  height: 134px;
+  overflow: hidden;
+  position: relative;
+  background-color: #1a1a1a;
+}
+
+.grayscale-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+  display: block;
+}
+
+.grayscale-image:hover {
+  filter: grayscale(80%);
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  color: #565656;
+  font-size: 1.2rem;
+  text-align: center;
+  border: 2px dashed #2a2a2a;
+  border-radius: 8px;
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .timeline-top-section {
+    min-height: 350px;
+  }
+
+  .person-graphic {
+    left: 2%;
+  }
+
+  .hand-graphic {
+    left: 20%;
+  }
+
+  .skill-label {
+    font-size: 0.9rem;
+  }
+
+  .pill-1 {
+    left: 40%;
+  }
+
+  .pill-2 {
+    left: 55%;
+  }
+
+  .pill-3 {
+    left: 45%;
+  }
+
+  .pill-4 {
+    left: 65%;
+  }
+
+  .pill-5 {
+    left: 70%;
+  }
+
+  .pill-6 {
+    left: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-page {
+    padding: 2rem 1rem;
+  }
+
+  .timeline-top-section {
+    min-height: 300px;
+    margin-bottom: 4rem;
+  }
+
+  .person-graphic {
+    left: 0;
+    transform: scale(0.7);
+  }
+
+  .hand-graphic {
+    left: 15%;
+    transform: scale(0.8);
+  }
+
+  .skill-label {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .pill-1 {
+    top: 10%;
+    left: 35%;
+  }
+
+  .pill-2 {
+    top: 18%;
+    left: 50%;
+  }
+
+  .pill-3 {
+    top: 25%;
+    left: 40%;
+  }
+
+  .pill-4 {
+    top: 15%;
+    left: 60%;
+  }
+
+  .pill-5 {
+    top: 5%;
+    left: 65%;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .pill-6 {
+    top: 2%;
+    left: 45%;
+  }
+
+  .timeline-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .timeline-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .person-graphic {
+    transform: scale(0.5);
+  }
+
+  .hand-graphic {
+    transform: scale(0.6);
+  }
+
+  .skill-label {
+    font-size: 0.65rem;
+  }
+}
