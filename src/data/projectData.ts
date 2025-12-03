@@ -51,7 +51,7 @@ export const projects: (Project | Comic)[] = [
     thumbnail: fallGuys,
     status: 'published',
     featured: true,
-    link: 'https://example.com/fall-guys',
+    link: 'https://fall-guys-clone.netlify.app/',
   },
   {
     id: 'web-landing-page',
@@ -62,7 +62,7 @@ export const projects: (Project | Comic)[] = [
     thumbnail: landingPage,
     status: 'published',
     featured: true,
-    link: 'https://example.com/landing-page',
+    link: 'https://www.figma.com/design/CTKkn4O8d1SQhAr5XNbfjZ/portfolio-test?node-id=0-1&t=MqjYJBaxubuR5ifq-1',
   },
   {
     id: 'web-pencil-run',
@@ -73,7 +73,7 @@ export const projects: (Project | Comic)[] = [
     thumbnail: pencilRun,
     status: 'published',
     featured: true,
-    link: 'https://example.com/pencil-run',
+    link: 'https://the-code-canvas.netlify.app/pencil-runner',
   },
   {
     id: 'web-pet-care',
@@ -84,7 +84,7 @@ export const projects: (Project | Comic)[] = [
     thumbnail: petCare,
     status: 'published',
     featured: true,
-    link: 'https://example.com/pet-care',
+    link: 'https://pet-care-landing-page.netlify.app/',
   },
   // Featured Render projects
   {

@@ -1,7 +1,7 @@
 .footer-container{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     max-width: 1200px;
     font-family: var(--font-zen-loop);
     padding: 4px 16px;
