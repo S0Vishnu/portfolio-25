@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
 @import url('https://fonts.googleapis.com/css2?family=Barrio&family=Funnel+Display:wght@300..800&family=Rock+Salt&family=Zen+Loop:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
 
 body,
 html,
@@ -14,14 +14,8 @@ html,
   --font-dm-sans: "DM Sans", sans-serif;
   --font-krona: "Krona One", sans-serif;
   --font-do-hyeon: "Do Hyeon", sans-serif;
-  --font-baren-outline: "baren_outline", sans-serif;
-  --font-baren-vintage: "baren_vintage", sans-serif;
-  --font-baren-regular: "baren_regular", sans-serif;
-  --font-baren-rough: "baren_rough", sans-serif;
-  --font-baren-rough-outline: "baren_rough_outline", sans-serif;
-  --font-baren-round: "baren_round", sans-serif;
-  --font-baren-round-outline: "baren_round_outline", sans-serif;
-
+  --font-homemade-apple: "Homemade Apple", cursive;
+  
   /* font size */
   --tiny: 0.625rem; /* 10px */
   --small: 0.75rem; /* 12px */
@@ -67,7 +61,7 @@ html,
 
   /* cursor */
   --cursor-pointer: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyMiIgY3k9IjIyIiByPSIxOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmNmZjAwIiBzdHJva2Utd2lkdGg9IjQiLz48L3N2Zz4=") 22 22, auto;
-  --cursor-default: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxMCIgZmlsbD0iI2ZjZmYwMCIvPjwvc3ZnPg==") 16 16, auto;
+  --cursor-default: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSI2IiBmaWxsPSIjZmNmZjAwIi8+PC9zdmc+") 16 16, auto;
 }
 
 * {

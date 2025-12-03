@@ -8,6 +8,13 @@
 }
 
 .gallery-container {
+  position: relative;
+
+  .dummy-shape-div {
+    position: absolute;
+    bottom: -40px;
+    right: 10%;
+  }
 
   .header {
     display: flex;

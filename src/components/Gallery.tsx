@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { projects } from '../data/projectData';
 import '../styles/Gallery.css';
-import { ArrowRightIcon, CloseIcon } from '../assets/svg/iconsSvg';
+import { ArrowRightIcon, CloseIcon, Shape1 } from '../assets/svg/iconsSvg';
 
 const Gallery = () => {
   const galleryItems = projects.filter(
@@ -38,15 +38,15 @@ const Gallery = () => {
   // Grab scroll handlers
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!galleryRef.current) return;
-    
+
     // Allow dragging from anywhere in the gallery, including buttons/images
     // But prevent default image drag behavior
     if ((e.target as HTMLElement).tagName === 'IMG') {
       e.preventDefault();
     }
-    
+
     stopAutoScroll(); // Stop any existing auto-scroll
-    
+
     isDraggingRef.current = true;
     startXRef.current = e.clientX; // Use clientX for better accuracy
     lastMouseXRef.current = e.clientX;
@@ -59,7 +59,7 @@ const Gallery = () => {
 
   const handleMouseLeave = () => {
     if (!galleryRef.current) return;
-    
+
     isDraggingRef.current = false;
     galleryRef.current.style.cursor = 'grab';
     galleryRef.current.style.userSelect = 'auto';
@@ -77,52 +77,52 @@ const Gallery = () => {
 
   const startAutoScroll = () => {
     stopAutoScroll(); // Clear any existing auto-scroll
-    
+
     if (!galleryRef.current) return;
-    
+
     const scrollSpeed = 6; // Pixels per frame
     const direction = scrollDirectionRef.current;
-    
+
     if (direction === 0) {
       return; // No direction, don't start
     }
-    
+
     // Set flag BEFORE starting to prevent scroll event from stopping it
     isAutoScrollingRef.current = true;
-    
+
     const animate = (currentTime: number) => {
       if (!galleryRef.current || !isAutoScrollingRef.current) {
         stopAutoScroll();
         return;
       }
-      
+
       // Initialize lastTime on first frame
       if (lastAutoScrollTimeRef.current === 0) {
         lastAutoScrollTimeRef.current = currentTime;
         autoScrollFrameRef.current = requestAnimationFrame(animate);
         return;
       }
-      
+
       const deltaTime = currentTime - lastAutoScrollTimeRef.current;
       lastAutoScrollTimeRef.current = currentTime;
-      
+
       const maxScroll = galleryRef.current.scrollWidth - galleryRef.current.clientWidth;
       const currentScroll = galleryRef.current.scrollLeft;
-      
+
       // Stop if at boundaries
       if ((direction > 0 && currentScroll >= maxScroll - 0.5) || (direction < 0 && currentScroll <= 0.5)) {
         stopAutoScroll();
         return;
       }
-      
+
       // Update scroll position based on time for consistent speed
       const pixelsToMove = (scrollSpeed * deltaTime) / 16.67; // Normalize to 60fps
       galleryRef.current.scrollLeft += pixelsToMove * direction;
-      
+
       // Continue animation
       autoScrollFrameRef.current = requestAnimationFrame(animate);
     };
-    
+
     // Reset time ref and start the animation
     lastAutoScrollTimeRef.current = 0;
     autoScrollFrameRef.current = requestAnimationFrame(animate);
@@ -152,14 +152,14 @@ const Gallery = () => {
   useEffect(() => {
     const handleGlobalMouseMove = (e: MouseEvent) => {
       if (!isDraggingRef.current || !galleryRef.current) return;
-      
+
       e.preventDefault();
-      
+
       // Update immediately without RAF for zero delay
       const mouseX = e.clientX;
       const walk = (mouseX - startXRef.current) * 1.5; // Scroll speed multiplier
       galleryRef.current.scrollLeft = scrollLeftRef.current - walk;
-      
+
       // Determine drag direction based on mouse movement for auto-scroll
       const mouseDelta = mouseX - lastMouseXRef.current;
       if (Math.abs(mouseDelta) > 1) { // Only update if significant movement
@@ -172,15 +172,15 @@ const Gallery = () => {
 
     const handleGlobalMouseUp = () => {
       if (!galleryRef.current) return;
-      
+
       if (isDraggingRef.current) {
         const wasDragging = hasDraggedRef.current;
         const direction = scrollDirectionRef.current;
-        
+
         isDraggingRef.current = false;
         galleryRef.current.style.cursor = 'grab';
         galleryRef.current.style.userSelect = 'auto';
-        
+
         // Start auto-scroll based on drag direction
         if (direction !== 0 && wasDragging) {
           // Use setTimeout to ensure scroll event doesn't interfere
@@ -213,11 +213,11 @@ const Gallery = () => {
       gallery.addEventListener('dragstart', preventImageDrag);
       gallery.addEventListener('drag', preventImageDrag);
     }
-    
+
     // Add global listeners for smooth dragging
     document.addEventListener('mousemove', handleGlobalMouseMove);
     document.addEventListener('mouseup', handleGlobalMouseUp);
-    
+
     return () => {
       stopAutoScroll();
       if (autoScrollFrameRef.current) {
@@ -241,7 +241,7 @@ const Gallery = () => {
         <h2 className="title">gallery.</h2>
         <ArrowRightIcon />
       </div>
-      <div 
+      <div
         className="grid-gallery"
         ref={galleryRef}
         onMouseDown={handleMouseDown}
@@ -275,6 +275,10 @@ const Gallery = () => {
             </div>
           </button>
         ))}
+      </div>
+
+      <div className="dummy-shape-div">
+        <Shape1 />
       </div>
 
       {/* Preview Modal - Rendered via Portal to avoid PageTransition transform issues */}
