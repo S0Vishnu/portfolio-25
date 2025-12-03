@@ -356,4 +356,80 @@ export const projects: (Project | Comic)[] = [
     thumbnail: zenClose,
     status: 'published',
   },
+  
+  // Comics
+  {
+    id: 'comic-adventure-quest',
+    title: 'Adventure Quest',
+    content: 'An epic adventure comic series',
+    category: 'comic',
+    beta: false,
+    thumbnail: robot1,
+    status: 'published',
+    chapters: [
+      {
+        id: 'chapter-1',
+        title: 'Chapter 1: The Beginning',
+        pages: [
+          { id: 'page-1', number: 1 },
+          { id: 'page-2', number: 2 },
+          { id: 'page-3', number: 3 },
+          { id: 'page-4', number: 4 },
+        ],
+      },
+      {
+        id: 'chapter-2',
+        title: 'Chapter 2: The Journey',
+        pages: [
+          { id: 'page-1', number: 1 },
+          { id: 'page-2', number: 2 },
+          { id: 'page-3', number: 3 },
+          { id: 'page-4', number: 4 },
+          { id: 'page-5', number: 5 },
+        ],
+      },
+      {
+        id: 'chapter-3',
+        title: 'Chapter 3: The Discovery',
+        pages: [
+          { id: 'page-1', number: 1 },
+          { id: 'page-2', number: 2 },
+          { id: 'page-3', number: 3 },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'comic-mystery-tales',
+    title: 'Mystery Tales',
+    content: 'A collection of mysterious stories',
+    category: 'comic',
+    beta: false,
+    thumbnail: abstract1,
+    status: 'published',
+    chapters: [
+      {
+        id: 'chapter-1',
+        title: 'Chapter 1: The Secret',
+        pages: [
+          { id: 'page-1', number: 1 },
+          { id: 'page-2', number: 2 },
+          { id: 'page-3', number: 3 },
+          { id: 'page-4', number: 4 },
+        ],
+      },
+      {
+        id: 'chapter-2',
+        title: 'Chapter 2: The Revelation',
+        pages: [
+          { id: 'page-1', number: 1 },
+          { id: 'page-2', number: 2 },
+          { id: 'page-3', number: 3 },
+          { id: 'page-4', number: 4 },
+          { id: 'page-5', number: 5 },
+          { id: 'page-6', number: 6 },
+        ],
+      },
+    ],
+  },
 ];

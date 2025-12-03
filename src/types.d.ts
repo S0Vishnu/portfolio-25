@@ -1,4 +1,4 @@
-type Category = "web-project" | "art" | "render" | "comic" | "design";
+type Category = "web-project" | "art" | "render" | "comic" | "design" | "story";
 
 interface Project {
   id: string;
