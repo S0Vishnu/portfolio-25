@@ -1,14 +1,66 @@
 @import './components.css';
 
-#contact {
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+body {
+  background: #000;
+  margin: 0;
+  font-family: sans-serif;
 }
 
-#contact h2 {
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
+.contact-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
   text-align: center;
+  transform: scale(1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
 }
 
+@media (max-width: 768px) {
+
+  .contact-container {
+    transform: scale(0.5);
+  }
+}
+
+.line-1,
+.line-2 {
+  font-size: var(--large-40);
+  font-family: var(--font-krona);
+  color: white;
+  margin: 5px 0;
+}
+
+.block {
+  margin-top: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .email {
+    font-size: var(--large);
+    font-family: var(--font-krona);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    width: fit-content;
+
+    &:hover {
+      text-decoration: underline;
+      color: var(--accent);
+    }
+  }
+
+  .resume {
+    padding: 0.85rem 2.5rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--hidden-text);
+    border: 1px solid transparent;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: capitalize;
+  }
+}

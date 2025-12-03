@@ -129,7 +129,6 @@ nav {
 
     a {
       pointer-events: all;
-      cursor: var(--cursor-pointer);
       filter: saturate(0);
       transition: filter 0.3s ease-in-out;
 

@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    max-width: 1200px;
     font-family: var(--font-zen-loop);
     padding: 4px 16px;
     margin: auto;

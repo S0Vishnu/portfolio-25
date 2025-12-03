@@ -1,7 +1,7 @@
 import React from "react";
 import { GitHubIcon, InstagramIcon, LinkedInIcon } from "../assets/svg/socialMediaSvg";
 
-const MainContents: React.FC = () => {
+const FixedContents: React.FC = () => {
   return (
     <div className="fixed-content-wrapper">
       <div className="logo">vi.</div>
@@ -32,4 +32,4 @@ const MainContents: React.FC = () => {
   );
 };
 
-export default MainContents;
+export default FixedContents;
