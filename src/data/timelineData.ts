@@ -17,7 +17,7 @@ export const timelineData: TimelineItem[] = [
     imageAlt: 'DCE College',
   },
   {
-    date: '2019 - 2024',
+    date: '2019 - 2022',
     location: 'cse, B.E., cbe',
     imageSrc: srec,
     imageAlt: 'Ramakrishna Engineering College',
