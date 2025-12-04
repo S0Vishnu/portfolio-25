@@ -16,7 +16,6 @@
 .category-heading {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
   color: inherit;
 }
 
@@ -70,12 +69,93 @@
   }
 }
 
-.modal-image {
-  max-width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+.modal-image-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+
+  .modal-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+}
+
+
+/* Initial open animation - fade and zoom only (only when no slide animations) */
+.modal-image.modal-image-initial {
   animation: modal-image-animation 0.5s ease-in-out forwards;
+}
+
+/* Slide out animations - these take priority over zoom */
+.modal-image.slide-out-left {
+  animation: slide-out-left 0.3s ease-in-out forwards !important;
+}
+
+.modal-image.slide-out-right {
+  animation: slide-out-right 0.3s ease-in-out forwards !important;
+}
+
+/* Slide in animations - these take priority over zoom */
+.modal-image.slide-in-right {
+  animation: slide-in-from-right 0.3s ease-in-out forwards !important;
+}
+
+.modal-image.slide-in-left {
+  animation: slide-in-from-left 0.3s ease-in-out forwards !important;
+}
+
+@keyframes slide-out-left {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-right {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-from-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .btn-close {
@@ -98,4 +178,90 @@
 
 .btn-close:hover svg {
   filter: invert(1);
+}
+
+/* Navigation Buttons */
+.btn-nav {
+  position: fixed;
+  top: 50%;
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  cursor: var(--cursor-pointer);
+  transition: all 0.3s ease;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+.btn-nav:hover {
+  background-color: var(--accent);
+
+  path {
+    fill: var(--background-main);
+  }
+}
+
+.btn-nav-prev {
+  left: 40px;
+  transform: translateY(-50%) scale(-1);
+}
+
+.btn-nav-next {
+  transform: translateY(-50%);
+  right: 40px;
+}
+
+.arrow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-left {
+  transform: rotate(180deg);
+}
+
+.btn-nav svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.btn-nav:hover svg {
+  transform: scale(1.2);
+}
+
+.arrow-left svg {
+  transform: rotate(180deg);
+}
+
+.arrow-left:hover svg {
+  transform: rotate(180deg) scale(1.2);
+}
+
+/* Responsive adjustments for navigation buttons */
+@media (max-width: 768px) {
+  .btn-nav {
+    height: 50px;
+    width: 50px;
+  }
+
+  .btn-nav-prev {
+    left: 10px;
+  }
+
+  .btn-nav-next {
+    right: 10px;
+  }
+
+  .btn-nav svg {
+    width: 20px;
+    height: 20px;
+  }
 }

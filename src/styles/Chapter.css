@@ -1,2 +1,175 @@
 @import './components.css';
 
+/* Chapter Page Container */
+.chapter-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 40px 40px;
+  min-height: 100vh;
+}
+
+/* Chapter Header */
+.chapter-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.chapter-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: inherit;
+}
+
+.chapter-subtitle {
+  font-size: 1.1rem;
+  color: #999;
+  margin: 0;
+}
+
+/* Navigation Container */
+.nav-container {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.nav-container.nav-bottom {
+  margin-top: 4rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--accent, #ffd700);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.5s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 24px;
+}
+
+.nav-link:hover {
+  color: var(--background-main);
+  background-color: var(--accent);
+}
+
+/* Comic Pages Container */
+.comic-pages-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.comic-page-wrapper {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.comic-page-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.comic-page-number {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #999;
+  font-weight: 500;
+}
+
+.comic-page-placeholder {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-card, #1a1a1a);
+  border-radius: 8px;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+/* Lazy Image Styles */
+.lazy-image-container {
+  width: 100%;
+  position: relative;
+  min-height: 400px;
+}
+
+.lazy-image-placeholder {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-card, #1a1a1a);
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.lazy-image-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 215, 0, 0.2);
+  border-top-color: var(--accent, #ffd700);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lazy-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chapter-container {
+    padding: 100px 20px 20px;
+  }
+
+  .chapter-header h1 {
+    font-size: 2rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .lazy-image-container {
+    min-height: 300px;
+  }
+}
+

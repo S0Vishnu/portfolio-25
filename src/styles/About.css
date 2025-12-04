@@ -44,3 +44,37 @@
         }
     }
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        height: auto;
+        min-height: 100vh;
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .about-container h2 {
+        font-size: clamp(2rem, 5vw, 2.5rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .content-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .image-container {
+        display: none !important;
+    }
+
+    .content-container .content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .content-container .content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+}

@@ -12,3 +12,10 @@
         font-size: 14px;
     }
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container .year {
+        font-size: 12px;
+    }
+}

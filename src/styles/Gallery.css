@@ -72,10 +72,6 @@
     cursor: grabbing;
   }
 
-  .card-container {
-    border: none;
-  }
-
   .card-image-container-small {
     width: 264px;
     min-width: 264px;
@@ -172,4 +168,60 @@
 
 .btn-close:hover svg {
   filter: invert(1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  #gallery {
+    padding: 3rem 1.5rem;
+  }
+
+  .card-image-container-small {
+    width: 220px;
+    min-width: 220px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  #gallery {
+    padding: 2rem 1rem;
+    margin-bottom: 80px;
+  }
+
+  .gallery-container .header .title {
+    font-size: var(--large);
+  }
+
+  .card-image-container-small {
+    width: 180px;
+    min-width: 180px;
+    height: 260px;
+  }
+
+  .modal-backdrop {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    max-width: 95%;
+    max-height: 95%;
+  }
+
+  .modal-image {
+    max-height: 60vh;
+  }
+
+  .btn-close {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-image-container-small {
+    width: 150px;
+    min-width: 150px;
+    height: 220px;
+  }
 }

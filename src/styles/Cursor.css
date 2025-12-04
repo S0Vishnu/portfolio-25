@@ -30,3 +30,9 @@ body.button-hovered .cb-cursor-inner {
   width: 60px;
 }
 
+/* Hide cursor on mobile devices */
+@media (max-width: 768px) {
+  .cb-cursor {
+    display: none;
+  }
+}
