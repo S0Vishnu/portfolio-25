@@ -224,7 +224,7 @@
 }
 
 .arrow-left {
-  transform: rotate(180deg);
+  pointer-events: none;
 }
 
 .btn-nav svg {
@@ -235,14 +235,6 @@
 
 .btn-nav:hover svg {
   transform: scale(1.2);
-}
-
-.arrow-left svg {
-  transform: rotate(180deg);
-}
-
-.arrow-left:hover svg {
-  transform: rotate(180deg) scale(1.2);
 }
 
 /* Responsive adjustments for navigation buttons */

@@ -23,6 +23,43 @@ nav {
   -o-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
+nav a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+.contact-me-btn {
+  color: var(--accent);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: var(--medium);
+  background: rgba(252, 255, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-me-btn span {
+  display: inline-block;
+}
+
+.contact-me-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.contact-me-btn:active {
+  transform: scale(0.98);
+}
+
 .home-container,
 .works-container {
   position: relative;

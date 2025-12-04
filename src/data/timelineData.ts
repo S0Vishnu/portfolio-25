@@ -23,7 +23,7 @@ export const timelineData: TimelineItem[] = [
     imageAlt: 'Ramakrishna Engineering College',
   },
   {
-    date: '2024 - Now',
+    date: '2022 - Now',
     location: 'ui/ux dev, Chennai',
     imageSrc: hexr,
     imageAlt: 'IHEXR Factory',
