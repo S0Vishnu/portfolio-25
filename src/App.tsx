@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Home from './pages/Home'
 import Works from './pages/Works'
@@ -12,6 +13,11 @@ import FixedContents from './components/FixedContents'
 
 const AnimatedRouter = () => {
   const location = useLocation()
+
+  // Reset scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
 
   return (
     <>
