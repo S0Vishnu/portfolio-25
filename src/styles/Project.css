@@ -1,0 +1,334 @@
+@import './components.css';
+
+/* Project Page Container */
+.project-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 40px 40px;
+  min-height: 100vh;
+}
+
+/* Error State */
+.project-error {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 120px 40px 40px;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-error h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-family: var(--font-josefin-sans);
+}
+
+.project-error p {
+  color: var(--text-gray-color);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.project-error-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--background-card);
+  color: var(--accent);
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.project-error-link:hover {
+  background: var(--background-card-2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Project Header */
+.project-header {
+  margin-bottom: 3rem;
+}
+
+.project-header-content {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.project-thumbnail {
+  flex-shrink: 0;
+  width: 200px;
+  height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--background-card-2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.project-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-info {
+  flex: 1;
+}
+
+.project-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-family: var(--font-josefin-sans);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  letter-spacing: -0.02em;
+}
+
+.project-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-gray-color);
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.project-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-gray-color);
+}
+
+.project-meta-item strong {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.project-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge-category {
+  background: var(--background-card);
+  color: var(--accent);
+  border: 1px solid rgba(252, 255, 0, 0.2);
+}
+
+.badge-status {
+  background: var(--background-card-2);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badge-beta {
+  background: rgba(252, 255, 0, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(252, 255, 0, 0.3);
+}
+
+/* Chapters Section */
+.project-chapters {
+  margin-top: 4rem;
+}
+
+.chapters-heading {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-family: var(--font-josefin-sans);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.chapters-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.chapters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.chapter-card {
+  background: var(--background-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: var(--cursor-pointer);
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.chapter-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-color: rgba(252, 255, 0, 0.3);
+}
+
+.chapter-card:hover::before {
+  transform: scaleX(1);
+}
+
+.chapter-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-family: var(--font-josefin-sans);
+  pointer-events: none;
+}
+
+.chapter-pages-count {
+  font-size: 0.9rem;
+  color: var(--text-gray-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.chapter-pages-count::before {
+  content: '📄';
+  font-size: 1rem;
+}
+
+/* Back Link */
+.project-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.project-back-link:hover {
+  gap: 0.75rem;
+  opacity: 0.9;
+}
+
+.project-back-link::before {
+  content: '←';
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.project-back-link:hover::before {
+  transform: translateX(-4px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .project-page-container {
+    padding: 100px 20px 20px;
+  }
+
+  .project-header-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .project-thumbnail {
+    width: 100%;
+    max-width: 300px;
+    height: 400px;
+    margin: 0 auto;
+  }
+
+  .project-title {
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+  }
+
+  .project-description {
+    font-size: 1rem;
+  }
+
+  .project-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .chapters-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .chapter-card {
+    padding: 1.25rem;
+  }
+
+  .project-error {
+    padding: 80px 20px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-thumbnail {
+    height: 300px;
+  }
+
+  .chapters-heading {
+    font-size: 1.5rem;
+  }
+
+  .chapter-title {
+    font-size: 1.1rem;
+  }
+}
+
