@@ -3,9 +3,20 @@ import { projects } from '../data/projectData';
 import '../styles/Projects.css';
 
 const Projects = () => {
-  const featuredProjects = projects
-    .filter((p) => p.featured === true && p.category !== 'art' && p.category !== 'render')
-    .slice(0, 6);
+  // Get up to 3 projects (web-project category)
+  const webProjects = projects
+    .filter((p) => p.category === 'web-project')
+    .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)) // Prioritize featured
+    .slice(0, 3);
+  
+  // Get up to 2 designs (design category)
+  const designs = projects
+    .filter((p) => p.category === 'design')
+    .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)) // Prioritize featured
+    .slice(0, 2);
+  
+  // Combine projects and designs (max 5 total)
+  const featuredProjects = [...webProjects, ...designs].slice(0, 5);
 
   type FeaturedProject = (typeof featuredProjects)[number];
 

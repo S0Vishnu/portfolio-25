@@ -6,6 +6,7 @@ const Landing = () => {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const heroWrapperRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
+  const animationFrameRef = useRef<number | null>(null);
 
   const isMobile = () => window.innerWidth <= 768; // Define mobile breakpoint
 
@@ -74,7 +75,6 @@ const Landing = () => {
     // Mouse tracking for reveal effect
     const mouse = { x: -999, y: -999 };
     const targetPos = { x: -999, y: -999 };
-    let animationFrameId: number | null = null;
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!heroWrapperRef.current) return;
@@ -85,21 +85,24 @@ const Landing = () => {
     };
 
     const animate = () => {
+      // Early exit if component unmounted
+      if (!overlayRef.current) {
+        return;
+      }
+
       // Smooth interpolation for mask position
       targetPos.x += (mouse.x - targetPos.x) * 0.15;
       targetPos.y += (mouse.y - targetPos.y) * 0.15;
 
-      if (overlayRef.current) {
-        overlayRef.current.style.setProperty("--mouse-x", `${targetPos.x}px`);
-        overlayRef.current.style.setProperty("--mouse-y", `${targetPos.y}px`);
-      }
+      overlayRef.current.style.setProperty("--mouse-x", `${targetPos.x}px`);
+      overlayRef.current.style.setProperty("--mouse-y", `${targetPos.y}px`);
 
-      animationFrameId = requestAnimationFrame(animate);
+      animationFrameRef.current = requestAnimationFrame(animate);
     };
 
     if (heroWrapperRef.current) {
       heroWrapperRef.current.addEventListener("mousemove", handleMouseMove);
-      animate();
+      animationFrameRef.current = requestAnimationFrame(animate);
     }
 
     return () => {
@@ -107,8 +110,9 @@ const Landing = () => {
       if (heroWrapperRef.current) {
         heroWrapperRef.current.removeEventListener("mousemove", handleMouseMove);
       }
-      if (animationFrameId !== null) {
-        cancelAnimationFrame(animationFrameId);
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

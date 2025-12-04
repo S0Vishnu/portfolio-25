@@ -20,6 +20,7 @@ const Gallery = () => {
   const isAutoScrollingRef = useRef(false);
   const autoScrollFrameRef = useRef<number | null>(null);
   const lastAutoScrollTimeRef = useRef<number>(0);
+  const setTimeoutRef = useRef<number | null>(null);
 
   const handleImageClick = (item: Project) => {
     setPreviewImage(item);
@@ -183,11 +184,16 @@ const Gallery = () => {
 
         // Start auto-scroll based on drag direction
         if (direction !== 0 && wasDragging) {
+          // Clear any existing timeout
+          if (setTimeoutRef.current) {
+            clearTimeout(setTimeoutRef.current);
+          }
           // Use setTimeout to ensure scroll event doesn't interfere
-          setTimeout(() => {
+          setTimeoutRef.current = setTimeout(() => {
             if (galleryRef.current) {
               startAutoScroll();
             }
+            setTimeoutRef.current = null;
           }, 0);
         } else {
           stopAutoScroll();
@@ -202,14 +208,16 @@ const Gallery = () => {
       }
     };
 
+    const handleWheel = () => {
+      stopAutoScroll();
+    };
+
     const gallery = galleryRef.current;
     if (gallery) {
       // Only listen to scroll for manual scrolls, not auto-scroll
       gallery.addEventListener('scroll', handleScroll);
       // Stop auto-scroll on wheel
-      gallery.addEventListener('wheel', () => {
-        stopAutoScroll();
-      });
+      gallery.addEventListener('wheel', handleWheel);
       gallery.addEventListener('dragstart', preventImageDrag);
       gallery.addEventListener('drag', preventImageDrag);
     }
@@ -223,11 +231,15 @@ const Gallery = () => {
       if (autoScrollFrameRef.current) {
         cancelAnimationFrame(autoScrollFrameRef.current);
       }
+      if (setTimeoutRef.current) {
+        clearTimeout(setTimeoutRef.current);
+        setTimeoutRef.current = null;
+      }
       document.removeEventListener('mousemove', handleGlobalMouseMove);
       document.removeEventListener('mouseup', handleGlobalMouseUp);
       if (gallery) {
         gallery.removeEventListener('scroll', handleScroll);
-        gallery.removeEventListener('wheel', stopAutoScroll);
+        gallery.removeEventListener('wheel', handleWheel);
         gallery.removeEventListener('dragstart', preventImageDrag);
         gallery.removeEventListener('drag', preventImageDrag);
       }
