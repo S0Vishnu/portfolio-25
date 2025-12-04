@@ -306,7 +306,7 @@ const Gallery = () => {
             <img
               src={previewImage.thumbnail}
               alt={previewImage.title}
-              className="modal-image"
+              className="home-modal-image"
             />
             <button
               onClick={handleClosePreview}

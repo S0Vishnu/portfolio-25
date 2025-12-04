@@ -15,30 +15,50 @@ html,
   --font-krona: "Krona One", sans-serif;
   --font-do-hyeon: "Do Hyeon", sans-serif;
   --font-homemade-apple: "Homemade Apple", cursive;
-  
+
   /* font size */
-  --tiny: 0.625rem; /* 10px */
-  --small: 0.75rem; /* 12px */
-  --s-regular: 0.875rem; /* 14px */
-  --s-medium: 1rem; /* 16px */
-  --big: 1.25rem; /* 18px */
-  --large: 1.5rem; /* 24px */
-  --xlarge: 2rem; /* 32px */
-  --xxlarge: 2rem; /* 32px */
-  --large-40: 2.5rem; /* 40px */
-  --large-60: 3.75rem; /* 60px */
-  --large-80: 5rem; /* 80px */
-  --large-96: 6rem; /* 90px */
+  --tiny: 0.625rem;
+  /* 10px */
+  --small: 0.75rem;
+  /* 12px */
+  --s-regular: 0.875rem;
+  /* 14px */
+  --s-medium: 1rem;
+  /* 16px */
+  --big: 1.25rem;
+  /* 18px */
+  --large: 1.5rem;
+  /* 24px */
+  --xlarge: 2rem;
+  /* 32px */
+  --xxlarge: 2rem;
+  /* 32px */
+  --large-40: 2.5rem;
+  /* 40px */
+  --large-60: 3.75rem;
+  /* 60px */
+  --large-80: 5rem;
+  /* 80px */
+  --large-96: 6rem;
+  /* 90px */
 
   /* Font weight */
-  --extra-light: 200; /* Extra Light */
-  --light: 300; /* Light (Thin) */
-  --regular: 400; /* Regular (Normal) */
-  --medium: 500; /* Medium */
-  --semi-bold: 600; /* Semi-Bold */
-  --bold: 700; /* Bold */
-  --extra-bold: 800; /* Extra Bold */
-  --black: 900; /* Black */
+  --extra-light: 200;
+  /* Extra Light */
+  --light: 300;
+  /* Light (Thin) */
+  --regular: 400;
+  /* Regular (Normal) */
+  --medium: 500;
+  /* Medium */
+  --semi-bold: 600;
+  /* Semi-Bold */
+  --bold: 700;
+  /* Bold */
+  --extra-bold: 800;
+  /* Extra Bold */
+  --black: 900;
+  /* Black */
 
   /* border radius */
   --border-radius-small: 4px;
@@ -83,6 +103,7 @@ a {
   color: var(--accent);
   text-decoration: inherit;
 }
+
 a:hover {
   color: #ffd900;
 }
@@ -104,4 +125,23 @@ button {
 ::-moz-selection {
   background-color: var(--accent);
   color: white;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4d600;
 }
