@@ -1,6 +1,5 @@
 // Import all project images
 import fallGuys from '../assets/images/projects/fall-guys.webp';
-import landingPage from '../assets/images/projects/landingPage.webp';
 import pencilRun from '../assets/images/projects/pencilRun.jpg';
 import petCare from '../assets/images/projects/pet-care.webp';
 
@@ -37,6 +36,7 @@ import wallartInStreet from '../assets/images/renders/wallart in street.webp';
 import watch from '../assets/images/renders/watch.webp';
 import zen from '../assets/images/renders/zen.webp';
 import zenClose from '../assets/images/renders/zen-close.webp';
+import { getAllComics } from '../utils/comicsLoader';
 
 // Projects data based on images in assets/images folder
 export const projects: (Project | Comic)[] = [
@@ -49,20 +49,9 @@ export const projects: (Project | Comic)[] = [
     category: 'web-project',
     beta: false,
     thumbnail: fallGuys,
-    status: 'published',
+    status: 'game',
     featured: true,
     link: 'https://fall-guys-clone.netlify.app/',
-  },
-  {
-    id: 'web-landing-page',
-    title: 'Landing Page',
-    content: 'Modern landing page design',
-    category: 'web-project',
-    beta: false,
-    thumbnail: landingPage,
-    status: 'published',
-    featured: true,
-    link: 'https://www.figma.com/design/CTKkn4O8d1SQhAr5XNbfjZ/portfolio-test?node-id=0-1&t=MqjYJBaxubuR5ifq-1',
   },
   {
     id: 'web-pencil-run',
@@ -71,7 +60,7 @@ export const projects: (Project | Comic)[] = [
     category: 'web-project',
     beta: false,
     thumbnail: pencilRun,
-    status: 'published',
+    status: 'game',
     featured: true,
     link: 'https://the-code-canvas.netlify.app/pencil-runner',
   },
@@ -82,7 +71,7 @@ export const projects: (Project | Comic)[] = [
     category: 'web-project',
     beta: false,
     thumbnail: petCare,
-    status: 'published',
+    status: 'not responsive',
     featured: true,
     link: 'https://pet-care-landing-page.netlify.app/',
   },
@@ -184,13 +173,13 @@ export const projects: (Project | Comic)[] = [
   // Design projects
   {
     id: 'web-portfolio',
-    title: 'Portfolio',
+    title: 'Portfolio design',
     content: 'Portfolio website project',
     category: 'design',
     beta: false,
     thumbnail: portfolio,
-    status: 'published',
-    link: 'https://example.com/portfolio',
+    status: '',
+    link: 'https://www.figma.com/design/CTKkn4O8d1SQhAr5XNbfjZ/portfolio-test?node-id=0-1&t=MqjYJBaxubuR5ifq-1',
   },
   // Art projects
   {
@@ -357,79 +346,6 @@ export const projects: (Project | Comic)[] = [
     status: 'published',
   },
   
-  // Comics
-  {
-    id: 'comic-adventure-quest',
-    title: 'Adventure Quest',
-    content: 'An epic adventure comic series',
-    category: 'comic',
-    beta: false,
-    thumbnail: robot1,
-    status: 'published',
-    chapters: [
-      {
-        id: 'chapter-1',
-        title: 'Chapter 1: The Beginning',
-        pages: [
-          { id: 'page-1', number: 1 },
-          { id: 'page-2', number: 2 },
-          { id: 'page-3', number: 3 },
-          { id: 'page-4', number: 4 },
-        ],
-      },
-      {
-        id: 'chapter-2',
-        title: 'Chapter 2: The Journey',
-        pages: [
-          { id: 'page-1', number: 1 },
-          { id: 'page-2', number: 2 },
-          { id: 'page-3', number: 3 },
-          { id: 'page-4', number: 4 },
-          { id: 'page-5', number: 5 },
-        ],
-      },
-      {
-        id: 'chapter-3',
-        title: 'Chapter 3: The Discovery',
-        pages: [
-          { id: 'page-1', number: 1 },
-          { id: 'page-2', number: 2 },
-          { id: 'page-3', number: 3 },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'comic-mystery-tales',
-    title: 'Mystery Tales',
-    content: 'A collection of mysterious stories',
-    category: 'comic',
-    beta: false,
-    thumbnail: abstract1,
-    status: 'published',
-    chapters: [
-      {
-        id: 'chapter-1',
-        title: 'Chapter 1: The Secret',
-        pages: [
-          { id: 'page-1', number: 1 },
-          { id: 'page-2', number: 2 },
-          { id: 'page-3', number: 3 },
-          { id: 'page-4', number: 4 },
-        ],
-      },
-      {
-        id: 'chapter-2',
-        title: 'Chapter 2: The Revelation',
-        pages: [
-          { id: 'page-1', number: 1 },
-          { id: 'page-2', number: 2 },
-          { id: 'page-3', number: 3 },
-          { id: 'page-4', number: 4 },
-          { id: 'page-5', number: 5 },
-          { id: 'page-6', number: 6 },
-        ],
-      },
-    ],
-  },
+  // Comics - dynamically loaded from assets/comics folder
+  ...getAllComics(),
 ];
