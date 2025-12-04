@@ -1,4 +1,4 @@
-type Category = "web-project" | "art" | "render" | "comic" | "design" | "story";
+type Category = "web-project" | "art" | "render" | "comic" | "design" | "story" | string;
 
 interface Project {
   id: string;
@@ -15,6 +15,7 @@ interface Project {
 interface Page {
   id: string;
   number: number | string;
+  url?: string; // Optional URL for the page image
 }
 
 interface Chapter {
@@ -25,6 +26,7 @@ interface Chapter {
 
 interface Comic extends Project {
   category: "comic";     // overrides to ensure comics must be category 'comic'
+  status: "completed" | "on going";  // comic-specific status values
   chapters: Chapter[];
 }
 
