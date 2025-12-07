@@ -14,19 +14,19 @@ export const timelineData: TimelineItem[] = [
     date: '2016 - 2019',
     location: 'dce, Diploma, cbe',
     imageSrc: psg,
-    imageAlt: 'DCE College',
+    imageAlt: 'PSG College of Technology',
   },
   {
     date: '2019 - 2022',
     location: 'cse, B.E., cbe',
     imageSrc: srec,
-    imageAlt: 'Ramakrishna Engineering College',
+    imageAlt: 'Sri Ramakrishna Engineering College',
   },
   {
     date: '2022 - Now',
     location: 'ui/ux dev, Chennai',
     imageSrc: hexr,
-    imageAlt: 'IHEXR Factory',
+    imageAlt: 'HEXR Factory',
   },
 ];
 
