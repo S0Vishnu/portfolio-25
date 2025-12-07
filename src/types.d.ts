@@ -1,13 +1,15 @@
-type Category = "web-project" | "art" | "render" | "comic" | "design" | "story" | string;
+type Category = "web-project" | "art" | "render" | "comic" | "design" | "story";
+
+type ProjectStatus = "completed" | "on going" | "game" | "not responsive" | "published" | "";
 
 interface Project {
   id: string;
   title: string;
   content: string;
-  category: Category;   // fixed, one of the five values
+  category: Category;
   beta: boolean;
   thumbnail: string;
-  status: string;
+  status: ProjectStatus;
   featured?: boolean;   // optional, for home page display
   link?: string;       // optional, external link for web-project and design
 }

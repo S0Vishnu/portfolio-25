@@ -5,11 +5,14 @@ import Home from './pages/Home'
 import Works from './pages/Works'
 import Project from './pages/Works/Project'
 import ChapterPage from './pages/Works/Chapter'
+import NotFound from './pages/NotFound'
 import './styles/App.css'
 import Cursor from './components/Cursor'
 import Footer from './components/Footer'
 import PageTransition from './components/PageTransition'
 import FixedContents from './components/FixedContents'
+import ErrorBoundary from './components/ErrorBoundary'
+import { APP_CONFIG, ANIMATION_DURATION } from './constants'
 
 const AnimatedRouter = () => {
   const location = useLocation()
@@ -22,13 +25,13 @@ const AnimatedRouter = () => {
 
   const handleContactClick = async (e: React.MouseEvent) => {
     e.preventDefault()
-    const email = 'vishnus.connect@gmail.com'
+    const email = APP_CONFIG.CONTACT_EMAIL
     try {
       await navigator.clipboard.writeText(email)
       setCopied(true)
       setTimeout(() => {
         setCopied(false)
-      }, 2000)
+      }, ANIMATION_DURATION.COPY_FEEDBACK)
     } catch (err) {
       console.error('Failed to copy email:', err)
     }
@@ -64,6 +67,7 @@ const AnimatedRouter = () => {
             <Route path="/works" element={<Works />} />
             <Route path="/works/:project" element={<Project />} />
             <Route path="/works/:project/:chapter" element={<ChapterPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </PageTransition>
       </AnimatePresence>
@@ -73,13 +77,13 @@ const AnimatedRouter = () => {
 
 function App() {
   return (
-    <>
-      <Cursor />
+    <ErrorBoundary>
       <BrowserRouter>
+        <Cursor />
         <AnimatedRouter />
       </BrowserRouter>
       <Footer />
-    </>
+    </ErrorBoundary>
   )
 }
 

@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { projects } from '../data/projectData';
 import '../styles/Gallery.css';
 import { ArrowRightIcon, CloseIcon, Shape1 } from '../assets/svg/iconsSvg';
+import Skeleton from './Skeleton';
 
 const Gallery = () => {
   const galleryItems = projects.filter(
@@ -10,6 +11,7 @@ const Gallery = () => {
   );
 
   const [previewImage, setPreviewImage] = useState<Project | null>(null);
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const galleryRef = useRef<HTMLDivElement>(null);
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
@@ -23,6 +25,7 @@ const Gallery = () => {
   const setTimeoutRef = useRef<number | null>(null);
 
   const handleImageClick = (item: Project) => {
+    setIsImageLoading(true);
     setPreviewImage(item);
   };
 
@@ -303,14 +306,24 @@ const Gallery = () => {
             onClick={(e) => e.stopPropagation()}
             className="modal-content"
           >
-            <img
-              src={previewImage.thumbnail}
-              alt={previewImage.title}
-              className="home-modal-image"
-            />
+            <div className="home-modal-image-container">
+              {isImageLoading && (
+                <div className="home-modal-image-skeleton">
+                  <Skeleton variant="image" animation="wave" className="home-modal-skeleton-inner" />
+                </div>
+              )}
+              <img
+                src={previewImage.thumbnail}
+                alt={previewImage.title}
+                className={`home-modal-image ${isImageLoading ? 'loading' : 'loaded'}`}
+                onLoad={() => setIsImageLoading(false)}
+                onError={() => setIsImageLoading(false)}
+              />
+            </div>
             <button
               onClick={handleClosePreview}
               className="btn-close"
+              aria-label="Close preview"
             >
               <CloseIcon />
             </button>

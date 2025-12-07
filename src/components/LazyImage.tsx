@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import Skeleton from './Skeleton';
+import '../styles/LazyImage.css';
 
 interface LazyImageProps {
   src: string;
@@ -14,6 +16,7 @@ interface LazyImageProps {
 const LazyImage = ({ src, alt, className, onLoad }: LazyImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -58,27 +61,38 @@ const LazyImage = ({ src, alt, className, onLoad }: LazyImageProps) => {
     }
   };
 
+  const handleError = () => {
+    setHasError(true);
+    setIsLoaded(true); // Stop showing skeleton on error
+  };
+
   return (
     <div className={`lazy-image-container ${className || ''}`} ref={imgRef}>
       {isInView && (
         <>
-          {!isLoaded && (
-            <div className="lazy-image-placeholder">
-              <div className="lazy-image-spinner" />
+          {!isLoaded && !hasError && (
+            <div className="lazy-image-skeleton">
+              <Skeleton variant="image" animation="wave" className="lazy-image-skeleton-inner" />
+            </div>
+          )}
+          {hasError && (
+            <div className="lazy-image-error">
+              <p>Failed to load image</p>
             </div>
           )}
           <img
             src={src}
             alt={alt}
-            className={`lazy-image ${isLoaded ? 'loaded' : ''}`}
+            className={`lazy-image ${isLoaded ? 'loaded' : ''} ${hasError ? 'error' : ''}`}
             onLoad={handleLoad}
+            onError={handleError}
             loading="lazy"
           />
         </>
       )}
       {!isInView && (
-        <div className="lazy-image-placeholder">
-          <div className="lazy-image-spinner" />
+        <div className="lazy-image-skeleton">
+          <Skeleton variant="image" animation="wave" className="lazy-image-skeleton-inner" />
         </div>
       )}
     </div>

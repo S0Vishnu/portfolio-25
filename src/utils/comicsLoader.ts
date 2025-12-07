@@ -170,11 +170,6 @@ export function loadComicsFromAssets(): ComicData[] {
       });
     });
 
-    // Debug: Log detected chapters for troubleshooting
-    if (comicName.toLowerCase().includes('god') || comicName.toLowerCase().includes('protocol')) {
-      console.log(`[ComicsLoader] Comic: ${comicName}, Detected chapters:`, Array.from(chaptersMap.keys()));
-    }
-
     // Convert chapters map to array, sort by original chapter name, then format
     const chapterEntries = Array.from(chaptersMap.entries());
     
@@ -240,7 +235,6 @@ export function loadComicsFromAssets(): ComicData[] {
       .split('-')
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
-    console.log(comicTitle, chapters);
     comics.push({
       id: comicId,
       title: comicTitle,

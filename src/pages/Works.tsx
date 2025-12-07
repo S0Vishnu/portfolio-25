@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projectData';
 import { CloseIcon, ArrowRightIcon } from '../assets/svg/iconsSvg';
+import { NAVIGATION_TIMING } from '../constants';
+import Skeleton from '../components/Skeleton';
 import '../styles/Works.css';
 
 const Works = () => {
@@ -11,15 +13,18 @@ const Works = () => {
   const [slideDirection, setSlideDirection] = useState<'left' | 'right' | 'slide-in-right' | 'slide-in-left' | null>(null);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [isInitialOpen, setIsInitialOpen] = useState<boolean>(true);
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
-  // Group projects by category
-  const projectsByCategory = {
+  // Memoize grouped projects to avoid recalculation
+  const projectsByCategory = useMemo(() => ({
     projects: projects.filter(p => p.category === 'web-project'),
     designs: projects.filter(p => p.category === 'design'),
     gallery: projects.filter(p => p.category === 'art' || p.category === 'render'),
     comics: projects.filter(p => p.category === 'comic'),
     stories: projects.filter(p => p.category === 'story'),
-  };
+  }), []);
 
   // Get all gallery items for navigation
   const galleryItems = projectsByCategory.gallery;
@@ -32,49 +37,54 @@ const Works = () => {
     setPreviewImage(item);
     setSlideDirection(null);
     setIsInitialOpen(true);
+    setIsImageLoading(true);
+    // Store the element that had focus before opening modal
+    previousFocusRef.current = document.activeElement as HTMLElement;
   };
 
   const handleClosePreview = () => {
     setPreviewImage(null);
     setSlideDirection(null);
     setIsInitialOpen(true);
-  };
-
-  const goToNext = () => {
-    if (currentIndex < galleryItems.length - 1 && !isAnimating) {
-      setIsInitialOpen(false); // Set this first to prevent zoom
-      setIsAnimating(true);
-      setSlideDirection('left');
-      setTimeout(() => {
-        const nextIndex = currentIndex + 1;
-        setCurrentIndex(nextIndex);
-        setPreviewImage(galleryItems[nextIndex]);
-        setSlideDirection('slide-in-right');
-        setTimeout(() => {
-          setSlideDirection(null);
-          setIsAnimating(false);
-        }, 350);
-      }, 300);
+    // Restore focus to the element that had it before opening modal
+    if (previousFocusRef.current) {
+      previousFocusRef.current.focus();
+      previousFocusRef.current = null;
     }
   };
 
-  const goToPrevious = () => {
-    if (currentIndex > 0 && !isAnimating) {
-      setIsInitialOpen(false); // Set this first to prevent zoom
-      setIsAnimating(true);
-      setSlideDirection('right');
+  // Extract navigation logic to avoid duplication
+  const navigateToIndex = useCallback((targetIndex: number, direction: 'left' | 'right') => {
+    if (isAnimating) return;
+    
+    setIsInitialOpen(false);
+    setIsAnimating(true);
+    setIsImageLoading(true);
+    setSlideDirection(direction);
+    
+    setTimeout(() => {
+      setCurrentIndex(targetIndex);
+      setPreviewImage(galleryItems[targetIndex]);
+      setSlideDirection(direction === 'left' ? 'slide-in-right' : 'slide-in-left');
+      
       setTimeout(() => {
-        const prevIndex = currentIndex - 1;
-        setCurrentIndex(prevIndex);
-        setPreviewImage(galleryItems[prevIndex]);
-        setSlideDirection('slide-in-left');
-        setTimeout(() => {
-          setSlideDirection(null);
-          setIsAnimating(false);
-        }, 350);
-      }, 300);
+        setSlideDirection(null);
+        setIsAnimating(false);
+      }, NAVIGATION_TIMING.SLIDE_IN);
+    }, NAVIGATION_TIMING.SLIDE_OUT);
+  }, [isAnimating, galleryItems]);
+
+  const goToNext = useCallback(() => {
+    if (currentIndex < galleryItems.length - 1) {
+      navigateToIndex(currentIndex + 1, 'left');
     }
-  };
+  }, [currentIndex, galleryItems.length, navigateToIndex]);
+
+  const goToPrevious = useCallback(() => {
+    if (currentIndex > 0) {
+      navigateToIndex(currentIndex - 1, 'right');
+    }
+  }, [currentIndex, navigateToIndex]);
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -86,51 +96,60 @@ const Works = () => {
     goToPrevious();
   };
 
-  // Keyboard navigation
+  // Keyboard navigation and focus trap
   useEffect(() => {
     if (!previewImage) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') {
-        if (currentIndex < galleryItems.length - 1 && !isAnimating) {
-          setIsInitialOpen(false);
-          setIsAnimating(true);
-          setSlideDirection('left');
-          setTimeout(() => {
-            const nextIndex = currentIndex + 1;
-            setCurrentIndex(nextIndex);
-            setPreviewImage(galleryItems[nextIndex]);
-            setSlideDirection('slide-in-right');
-            setTimeout(() => {
-              setSlideDirection(null);
-              setIsAnimating(false);
-            }, 350);
-          }, 300);
-        }
+        e.preventDefault();
+        goToNext();
       } else if (e.key === 'ArrowLeft') {
-        if (currentIndex > 0 && !isAnimating) {
-          setIsInitialOpen(false);
-          setIsAnimating(true);
-          setSlideDirection('right');
-          setTimeout(() => {
-            const prevIndex = currentIndex - 1;
-            setCurrentIndex(prevIndex);
-            setPreviewImage(galleryItems[prevIndex]);
-            setSlideDirection('slide-in-left');
-            setTimeout(() => {
-              setSlideDirection(null);
-              setIsAnimating(false);
-            }, 350);
-          }, 300);
-        }
+        e.preventDefault();
+        goToPrevious();
       } else if (e.key === 'Escape') {
+        e.preventDefault();
         handleClosePreview();
       }
     };
 
+    // Focus trap: keep focus within modal
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || !modalRef.current) return;
+      
+      const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement?.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement?.focus();
+        }
+      }
+    };
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [previewImage, currentIndex, galleryItems, isAnimating]);
+    window.addEventListener('keydown', handleTabKey);
+    
+    // Focus first focusable element in modal
+    const firstFocusable = modalRef.current?.querySelector<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    firstFocusable?.focus();
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', handleTabKey);
+    };
+  }, [previewImage, currentIndex, galleryItems, isAnimating, goToNext, goToPrevious]);
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
@@ -296,8 +315,13 @@ const Works = () => {
         <div
           onClick={handleBackdropClick}
           className="modal-backdrop"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          aria-describedby="modal-description"
         >
           <div
+            ref={modalRef}
             onClick={(e) => e.stopPropagation()}
             className="modal-content"
           >
@@ -329,6 +353,11 @@ const Works = () => {
 
             {/* Image Container with Slide Animation */}
             <div className="modal-image-container">
+              {isImageLoading && (
+                <div className="modal-image-skeleton">
+                  <Skeleton variant="image" animation="wave" className="modal-skeleton-inner" />
+                </div>
+              )}
               <img
                 src={previewImage.thumbnail}
                 alt={previewImage.title}
@@ -344,16 +373,18 @@ const Works = () => {
                           : isInitialOpen && !isAnimating && !slideDirection
                             ? 'modal-image-initial' 
                             : ''
-                }`}
+                } ${isImageLoading ? 'loading' : 'loaded'}`}
                 key={`${previewImage.id}-${currentIndex}-${isInitialOpen}`}
+                onLoad={() => setIsImageLoading(false)}
+                onError={() => setIsImageLoading(false)}
               />
             </div>
 
             <div style={{ textAlign: 'center', color: '#fff' }}>
-              <h3 style={{ marginBottom: '0.5rem' }}>{previewImage.title}</h3>
-              <p style={{ margin: 0, color: '#aaa' }}>{previewImage.content}</p>
+              <h3 id="modal-title" style={{ marginBottom: '0.5rem' }}>{previewImage.title}</h3>
+              <p id="modal-description" style={{ margin: 0, color: '#aaa' }}>{previewImage.content}</p>
               {galleryItems.length > 1 && (
-                <p style={{ margin: '0.5rem 0 0 0', color: '#666', fontSize: '0.875rem' }}>
+                <p style={{ margin: '0.5rem 0 0 0', color: '#666', fontSize: '0.875rem' }} aria-live="polite">
                   {currentIndex + 1} / {galleryItems.length}
                 </p>
               )}
@@ -387,6 +418,7 @@ const Works = () => {
             <button
               onClick={handleClosePreview}
               className="btn-close"
+              aria-label="Close preview"
             >
               <CloseIcon />
             </button>

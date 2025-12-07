@@ -1,0 +1,108 @@
+.error-boundary {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var(--background-main);
+  color: var(--text-color);
+}
+
+.error-boundary-content {
+  max-width: 600px;
+  text-align: center;
+  padding: 2rem;
+  background: var(--background-card);
+  border-radius: var(--border-radius-large);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.error-boundary h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  font-family: var(--font-josefin-sans);
+}
+
+.error-boundary p {
+  color: var(--text-gray-color);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.error-details {
+  margin: 1.5rem 0;
+  text-align: left;
+  background: var(--background-card-2);
+  padding: 1rem;
+  border-radius: var(--border-radius-medium);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.error-details summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: var(--medium);
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+
+.error-details pre {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: var(--background-main);
+  border-radius: var(--border-radius-small);
+  overflow-x: auto;
+  font-size: 0.875rem;
+  color: var(--text-gray-color);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.error-boundary-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.error-boundary-button {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: var(--hidden-text);
+  border: none;
+  border-radius: var(--border-radius-medium);
+  font-weight: var(--medium);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.error-boundary-button:hover {
+  background: #ffd900;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(252, 255, 0, 0.3);
+}
+
+.error-boundary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--background-card-2);
+  color: var(--accent);
+  text-decoration: none;
+  border-radius: var(--border-radius-medium);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  font-weight: var(--medium);
+}
+
+.error-boundary-link:hover {
+  background: var(--background-card);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
