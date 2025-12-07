@@ -12,6 +12,7 @@ nav {
   transform: translateX(-50%);
   z-index: 10;
   padding: 12px 28px;
+  padding-right: 12px;
   border-radius: 50px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);

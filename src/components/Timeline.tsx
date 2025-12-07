@@ -30,13 +30,19 @@ const Timeline = () => {
             <div className="timeline-bottom-section">
                 <div className="timeline-container">
                     {timelineData.map((item, index) => (
-                        <div key={index} className="timeline-item">
+                        <div
+                            key={index}
+                            className="timeline-item"
+                        >
                             <div className="timeline-text">
                                 <span className="timeline-date">{item.date}</span>
                                 <span className="timeline-flag"><MileStoneIcon /></span>
                                 <span className="timeline-location">{item.location}</span>
                             </div>
-                            <div className="timeline-image">
+                            <div
+                                className="timeline-image"
+                                data-timeline-image={item.imageAlt}
+                            >
                                 <img
                                     src={item.imageSrc}
                                     alt={item.imageAlt}

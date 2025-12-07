@@ -4,13 +4,16 @@ import "../styles/Cursor.css";
 
 const Cursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const rotationRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
+  const labelRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
   const isHoveredRef = useRef(false);
   const mouseRef = useRef({ x: 0, y: 0 });
   const posRef = useRef({ x: 0, y: 0 });
   const lastRef = useRef({ x: 0, y: 0 });
   const isAnimatingRef = useRef(false);
+  const currentLabelRef = useRef("");
   const location = useLocation();
 
   // Reset cursor on route change
@@ -28,9 +31,13 @@ const Cursor = () => {
     isAnimatingRef.current = false;
 
     // Reset cursor position and transform
-    if (cursorRef.current && innerRef.current) {
+    if (cursorRef.current && innerRef.current && rotationRef.current && labelRef.current) {
       cursorRef.current.style.transform = "";
+      rotationRef.current.style.transform = "";
       innerRef.current.style.transform = "";
+      labelRef.current.classList.remove("cb-cursor-label-visible");
+      labelRef.current.textContent = "";
+      currentLabelRef.current = "";
     }
 
     // Reset hover state
@@ -42,6 +49,21 @@ const Cursor = () => {
 
   useEffect(() => {
     const threshold = 0.1; // Minimum movement threshold to continue animating
+
+    const setLabel = (text: string | null) => {
+      if (!labelRef.current) return;
+      if (text) {
+        if (currentLabelRef.current !== text) {
+          currentLabelRef.current = text;
+          labelRef.current.textContent = text;
+        }
+        labelRef.current.classList.add("cb-cursor-label-visible");
+      } else if (currentLabelRef.current) {
+        currentLabelRef.current = "";
+        labelRef.current.textContent = "";
+        labelRef.current.classList.remove("cb-cursor-label-visible");
+      }
+    };
 
     const updateMouse = (e: MouseEvent) => {
       mouseRef.current.x = e.clientX;
@@ -61,6 +83,7 @@ const Cursor = () => {
                            target.tagName === "A" ||
                            target.closest("button") !== null ||
                            target.closest("a") !== null;
+      const imageAlt = target.closest("[data-timeline-image]") as HTMLElement | null;
       
       if (isInteractive && !isHoveredRef.current) {
         document.body.classList.add("button-hovered");
@@ -68,6 +91,13 @@ const Cursor = () => {
       } else if (!isInteractive && isHoveredRef.current) {
         document.body.classList.remove("button-hovered");
         isHoveredRef.current = false;
+      }
+
+      if (imageAlt) {
+        const alt = imageAlt.getAttribute("data-timeline-image") || "";
+        setLabel(alt);
+      } else {
+        setLabel(null);
       }
     };
 
@@ -77,7 +107,7 @@ const Cursor = () => {
 
     const animate = () => {
       // Early exit if component unmounted
-      if (!cursorRef.current || !innerRef.current) {
+      if (!cursorRef.current || !rotationRef.current || !innerRef.current) {
         isAnimatingRef.current = false;
         return;
       }
@@ -103,7 +133,8 @@ const Cursor = () => {
       const scaleX = 1 + Math.min(velocity / 15, 0.5);
       const scaleY = 1 - Math.min(velocity / 25, 0.2);
 
-      cursorRef.current.style.transform = `translate(calc(-50% + ${posRef.current.x}px), calc(-50% + ${posRef.current.y}px)) rotate(${angle}deg) scale(${scaleX}, ${scaleY})`;
+      cursorRef.current.style.transform = `translate3d(${posRef.current.x}px, ${posRef.current.y}px, 0)`;
+      rotationRef.current.style.transform = `translate(-50%, -50%) rotate(${angle}deg) scale(${scaleX}, ${scaleY})`;
       innerRef.current.style.transform = `rotate(${-angle}deg)`;
 
       lastRef.current.x = posRef.current.x;
@@ -121,12 +152,16 @@ const Cursor = () => {
         animationFrameRef.current = null;
       }
       isAnimatingRef.current = false;
+      setLabel(null);
     };
   }, []);
 
   return (
     <div className="cb-cursor" ref={cursorRef}>
-      <div className="cb-cursor-inner" ref={innerRef}></div>
+      <div className="cb-cursor-rotation" ref={rotationRef}>
+        <div className="cb-cursor-inner" ref={innerRef}></div>
+      </div>
+      <div className="cb-cursor-label" ref={labelRef}></div>
     </div>
   );
 };
